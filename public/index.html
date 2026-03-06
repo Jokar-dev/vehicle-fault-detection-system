@@ -3,8 +3,15 @@
 
 <head>
 
-<title>Vehicle Fault Detection System</title>
+<title>Vehicle Telemetry Dashboard</title>
+
 <link rel="stylesheet" href="style.css">
+
+<!-- Chart.js for graphs -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- QR code library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
 </head>
 
@@ -12,7 +19,64 @@
 
 <div class="container">
 
-<h1 class="title">🚗 Vehicle Fault Detection System</h1>
+<h1 class="title">🚗 Vehicle Telemetry Dashboard</h1>
+
+<p class="subtitle">
+Real-time monitoring system that detects abnormal vehicle conditions and alerts drivers before failures occur.
+</p>
+
+
+<!-- VEHICLE INFO -->
+
+<div class="vehicle-info">
+
+<h2>🚘 Vehicle Information</h2>
+
+<div class="vehicle-grid">
+
+<div>
+<strong>Plate Number:</strong>
+<span id="plate">TN 09 AB 1234</span>
+</div>
+
+<div>
+<strong>Owner:</strong>
+<span id="owner">Shruti Raman</span>
+</div>
+
+<div>
+<strong>Model:</strong>
+<span id="model">Hyundai Creta 2022</span>
+</div>
+
+<div>
+<strong>Status:</strong>
+<span id="vehicleStatus">Active</span>
+</div>
+
+</div>
+
+<br>
+
+<div id="qrcode"></div>
+
+</div>
+
+
+<!-- VEHICLE HEALTH -->
+
+<div class="healthCard">
+
+<h2>Vehicle Health</h2>
+
+<div id="healthScore">100</div>
+
+<p id="riskLevel">LOW RISK</p>
+
+</div>
+
+
+<!-- SENSOR DASHBOARD -->
 
 <div class="grid">
 
@@ -38,36 +102,61 @@
 
 </div>
 
+
+<!-- TELEMETRY GRAPH -->
+
+<div class="vehicle-info">
+
+<h2>📊 Vehicle Telemetry</h2>
+
+<canvas id="speedChart" height="100"></canvas>
+
+</div>
+
+
+<!-- ALERTS -->
+
 <div class="alertBox">
 
 <h2>⚠ System Alerts</h2>
 
 <div id="alerts">
-<p>Adjust vehicle parameters below</p>
+<p>Monitoring vehicle data...</p>
 </div>
 
 </div>
 
 
-<h2 style="margin-top:40px;">⚙ Vehicle Sensor Simulator</h2>
+<!-- HISTORY -->
 
-<div class="controls">
+<button id="historyBtn" class="history-button">📜 View Check History</button>
 
-<label>Speed</label>
-<input type="range" id="speedInput" min="0" max="160" value="60">
+<div id="historyPanel" class="history-panel">
 
-<label>Engine Temperature</label>
-<input type="range" id="tempInput" min="60" max="140" value="90">
+<h2>Last 10 Vehicle Checks</h2>
 
-<label>Battery Voltage</label>
-<input type="range" id="batteryInput" min="9" max="14" step="0.1" value="12">
+<table id="historyTable">
 
-<label>Tire Pressure</label>
-<input type="range" id="tireInput" min="15" max="40" value="30">
+<thead>
+<tr>
+<th>Time</th>
+<th>Speed</th>
+<th>Temp</th>
+<th>Battery</th>
+<th>Tire</th>
+<th>Status</th>
+</tr>
+</thead>
+
+<tbody>
+</tbody>
+
+</table>
 
 </div>
 
 </div>
+
 
 <script src="script.js"></script>
 
